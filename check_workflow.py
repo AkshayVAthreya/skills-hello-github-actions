@@ -16,3 +16,4 @@ with open("workflow_log.txt", "a") as f:
   f.write(log_message)
 
 print(log_message.strip())
+#Done
