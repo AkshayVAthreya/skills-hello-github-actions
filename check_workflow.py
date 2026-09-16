@@ -3,7 +3,10 @@ import os
 
 # Get current time and system details
 now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-user = os.getlogin() if hasattr(os, "getlogin") else "Unknown"
+try:
+  user = os.getlogin()
+except OSError:
+  user = os.environ.get("USER") or os.environ.get("USERNAME") or "Unknown"
 
 # Create log message
 log_message = f"Workflow check successful at {now} by user: {user}\n"
